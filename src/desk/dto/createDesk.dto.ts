@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsNumber, IsString } from "class-validator";
-import { FrontCard } from "src/card/frontcard/schemas/frontCard.entity";
+import { Card } from "src/card/schemas/card.entity";
 import { BaseEntity } from "typeorm";
 
 
@@ -15,5 +15,5 @@ export class CreateDeskDto {
     @IsString()
     readonly description: string;
 
-    readonly card?: FrontCard[]
+    readonly card?: Card[];
 }

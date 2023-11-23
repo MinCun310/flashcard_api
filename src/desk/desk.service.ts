@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Desk } from './schemas/desk.entity';
 import mongoose from 'mongoose';
-import { find } from 'rxjs';
 
 @Injectable()
 export class DeskService {

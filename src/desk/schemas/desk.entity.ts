@@ -1,8 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { FrontCard } from "src/card/frontcard/schemas/frontCard.entity";
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import * as mongoose from 'mongoose';
-import { BackCard } from "src/card/backcard/schemas/backCard.entity";
+import { Card } from "src/card/schemas/card.entity";
 
 @Schema({
     timestamps: true
@@ -18,9 +16,6 @@ export class Desk {
     description: string;
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'FrontCard' })
-    frontcard?: FrontCard[];
-
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'FrontCard' })
-    backcard?: BackCard[];
+    card?: Card[];
 }
 export const DeskSchema = SchemaFactory.createForClass(Desk);

@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { FrontCardModule } from './card/frontcard/frontCard.module';
+import { CardModule } from './card/Card.module';
 import { DeskModule } from './desk/desk.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { BackCardModule } from './card/backcard/backcard.module';
 
 @Module({
   imports: [
@@ -14,9 +13,8 @@ import { BackCardModule } from './card/backcard/backcard.module';
       isGlobal: true
     }),
     MongooseModule.forRoot(process.env.DB_URI),
-    FrontCardModule,
+    CardModule,
     DeskModule,
-    BackCardModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,22 +1,25 @@
 import { IsEnum, IsNotEmpty, IsNumber, IsString } from "class-validator";
-import { BackCard } from "src/card/backcard/schemas/backCard.entity";
 import { Desk } from "src/desk/schemas/desk.entity";
 
-export class CreateFrontCardDto {
+export class CreateCardDto {
     @IsNotEmpty()
     @IsNumber()
     readonly id: number;
 
     @IsNotEmpty()
     @IsString()
-    readonly name: string;
+    readonly titleFrontCard: string;
 
     @IsString()
-    readonly content: string;
+    readonly contentFrontCard: string;
+
+    @IsNotEmpty()
+    @IsString()
+    readonly titleBackCard: string;
+
+    @IsString()
+    readonly contentBackCard: string;
 
     @IsNotEmpty()
     readonly deskId: Desk;
-
-    @IsNotEmpty()
-    readonly backCardId: BackCard;
 }

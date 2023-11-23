@@ -2,11 +2,14 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { DeskService } from './desk.service';
 import { CreateDeskDto } from './dto/createDesk.dto';
 import { Desk } from './schemas/desk.entity';
+import { CardService } from 'src/card/card.service';
+import { Card } from 'src/card/schemas/card.entity';
+import { CreateCardDto } from 'src/card/dto/createCard.dto';
 
 @Controller('desk')
 export class DeskController {
     constructor(
-        private deskService: DeskService
+        private deskService: DeskService,
     ) { }
 
     @Post('/create')
@@ -14,8 +17,8 @@ export class DeskController {
         return this.deskService.create(createDeskDto);
     }
 
-    @Get('/findAll')
-    async findAllDesk(): Promise<Desk[]> {
+    @Get('/allDesk')
+    async showAllDesk(): Promise<Desk[]> {
         return this.deskService.findAll();
     }
 }
