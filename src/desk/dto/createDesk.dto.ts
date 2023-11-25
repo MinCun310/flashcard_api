@@ -15,5 +15,10 @@ export class CreateDeskDto {
     @IsString()
     readonly description: string;
 
+    readonly imageData: Buffer;
+
+    @IsString()
+    readonly contentType: string;
+
     readonly card?: Card[];
 }

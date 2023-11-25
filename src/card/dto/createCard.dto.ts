@@ -8,17 +8,10 @@ export class CreateCardDto {
 
     @IsNotEmpty()
     @IsString()
-    readonly titleFrontCard: string;
+    readonly title: string;
 
     @IsString()
-    readonly contentFrontCard: string;
-
-    @IsNotEmpty()
-    @IsString()
-    readonly titleBackCard: string;
-
-    @IsString()
-    readonly contentBackCard: string;
+    readonly content: string;
 
     @IsNotEmpty()
     readonly deskId: Desk;

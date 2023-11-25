@@ -3,11 +3,11 @@ import { DeskController } from './desk.controller';
 import { DeskService } from './desk.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DeskSchema } from './schemas/desk.entity';
-import { CardModule } from 'src/card/Card.module';
+import { CardSchema } from 'src/card/schemas/card.entity';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Desk', schema: DeskSchema }]),
+    MongooseModule.forFeature([{ name: 'Desk', schema: DeskSchema }, { name: 'Card', schema: CardSchema }]),
   ],
   controllers: [DeskController],
   providers: [DeskService],

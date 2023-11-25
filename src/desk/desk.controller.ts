@@ -1,10 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { DeskService } from './desk.service';
 import { CreateDeskDto } from './dto/createDesk.dto';
 import { Desk } from './schemas/desk.entity';
 import { CardService } from 'src/card/card.service';
 import { Card } from 'src/card/schemas/card.entity';
 import { CreateCardDto } from 'src/card/dto/createCard.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { storageConfig } from 'src/helpers/config';
 
 @Controller('desk')
 export class DeskController {
@@ -18,7 +20,13 @@ export class DeskController {
     }
 
     @Get('/allDesk')
-    async showAllDesk(): Promise<Desk[]> {
-        return this.deskService.findAll();
+    async showAllDesk() {
+        return this.deskService.findAllDeskAndCard();
+    }
+
+    @Post('/upload')
+    @UseInterceptors(FileInterceptor('image', { storage: storageConfig('image') }))
+    uploadFile(@UploadedFile() file: Express.Multer.File) {
+        console.log(file);
     }
 }
