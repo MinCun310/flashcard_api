@@ -15,18 +15,13 @@ export class DeskController {
     ) { }
 
     @Post('/create')
-    async createDesk(@Body() createDeskDto: CreateDeskDto): Promise<Desk> {
-        return this.deskService.create(createDeskDto);
+    @UseInterceptors(FileInterceptor('image', { storage: storageConfig('image') }))
+    async createDesk(@Body() createDeskDto: CreateDeskDto, @UploadedFile() file: Express.Multer.File): Promise<Desk> {
+        return this.deskService.create(createDeskDto, file);
     }
 
     @Get('/allDesk')
     async showAllDesk() {
         return this.deskService.findAllDeskAndCard();
-    }
-
-    @Post('/upload')
-    @UseInterceptors(FileInterceptor('image', { storage: storageConfig('image') }))
-    uploadFile(@UploadedFile() file: Express.Multer.File) {
-        console.log(file);
     }
 }

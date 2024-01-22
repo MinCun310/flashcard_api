@@ -13,11 +13,8 @@ export class Desk {
     @Prop()
     description: string;
 
-    @Prop(null)
-    imageData: Buffer;
-
-    @Prop(null)
-    contentType: string;
+    @Prop()
+    imageURL: string;
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Card' })
     card?: Card[];

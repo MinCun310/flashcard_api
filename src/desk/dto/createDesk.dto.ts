@@ -4,9 +4,9 @@ import { BaseEntity } from "typeorm";
 
 
 export class CreateDeskDto {
-    @IsNotEmpty()
-    @IsNumber()
-    readonly id: number;
+    // @IsNotEmpty()
+    // // @IsNumber()
+    // readonly id: number;
 
     @IsNotEmpty()
     @IsString()
@@ -15,10 +15,8 @@ export class CreateDeskDto {
     @IsString()
     readonly description: string;
 
-    readonly imageData: Buffer;
-
-    @IsString()
-    readonly contentType: string;
+    // @IsString()
+    // readonly contentType: string;
 
     readonly card?: Card[];
 }
